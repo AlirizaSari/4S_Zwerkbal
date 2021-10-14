@@ -26,7 +26,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams/create');
     }
 
     /**
@@ -37,7 +37,19 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([ 
+            'name' => 'required', 
+            'type' => 'required',
+            'origin' => 'required'
+        ]);
+
+        $team = new Team();
+        $team->name = $request->name;
+        $team->type = $request->type;
+        $team->origin = $request->origin;
+        $team->save();
+
+        return redirect()->route('teams.index');
     }
 
     /**

@@ -3,27 +3,31 @@
 @section('nav')
     <nav>
         <a href="/">Home</a>
-        <a href="/tournaments" class="active">Toernooien</a>
-        <a href="/teams">Teams</a>
+        <a href="/tournaments">Toernooien</a>
+        <a href="/teams" class="active">Teams</a>
         <a href="/players">Spelers</a>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Nieuw toernooi</h1>
-	<form action="{{ route('tournaments.store') }}" method="POST">
+    <h1>Nieuw team</h1>
+	<form action="{{ route('teams.store') }}" method="POST">
 		@csrf
 		<div class="form-group">
-			<label for="name">Naam toernooi</label>
+			<label for="name">Naam team</label>
 			<input type="text" id="name" name="name" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="date">Datum</label>
-			<input type="date" id="date" name="date" class="form-control">
+			<label for="type">Soort</label>
+			<select name="type" id="type">
+                <option value="School">School</option>
+                <option value="Country">Country</option>
+                <option value="Commercial">Commercial</option>
+            </select>
 		</div>
 		<div class="form-group">
-			<label for="time">Tijd</label>
-			<input type="time" id="start_time" name="start_time" class="form-control">
+			<label for="origin">Herkomst</label>
+			<input type="text" id="origin" name="origin" class="form-control">
 		</div>
 		<button type="submit">Opslaan</button>
 
